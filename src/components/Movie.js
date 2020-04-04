@@ -1,6 +1,6 @@
 import React from "react";
 
-const Movie = ({ movie, poster }) => {
+const Movie = ({ movie, poster, curMovie }) => {
   return (
     <div class="col s12 m6 l3">
       <div class="card">
@@ -13,7 +13,9 @@ const Movie = ({ movie, poster }) => {
           ></img>
         </div>
         <div class="card-action">
-          <a href="#">moredetails</a>
+          <a href="#" onClick={() => curMovie(movie.id)}>
+            moredetails
+          </a>
         </div>
       </div>
     </div>

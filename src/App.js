@@ -4,6 +4,8 @@ import Nav from "./components/Nav";
 import SearchBar from "./components/SearchBar";
 import MovieList from "./components/MovieList";
 import Pagination from "./components/Pagination";
+import MovieInfo from "./components/MovieInfo";
+
 const dotenv = require("dotenv");
 
 class App extends Component {
@@ -34,30 +36,60 @@ class App extends Component {
       });
   };
 
+  curMovie = id => {
+    this.state.movies.forEach(movie => {
+      if (movie.id === id) {
+        this.setState({ currentMovie: movie });
+      }
+    });
+  };
+
+  closeCurrent = id => {
+    this.setState({ currentMovie: null });
+  };
+
   constructor() {
     super();
     this.state = {
       searchedText: "",
       movies: [],
       totalPage: 0,
-      currentpage: 0
+      currentpage: 0,
+      currentMovie: null
     };
+  }
+  componentDidMount() {
+    // <Trending />;
   }
 
   render() {
     return (
       <div className="App">
         <Nav />
-        <SearchBar
-          searchText={this.searchText}
-          handleChange={this.handleChange}
-        />
-        <MovieList movies={this.state.movies} />
-        <Pagination
-          totalPage={this.state.totalPage}
-          // currentpage={this.state.currentpage}
-          nextPage={this.nextPage}
-        />
+
+        {this.state.currentMovie == null ? (
+          <div>
+            <SearchBar
+              searchText={this.searchText}
+              handleChange={this.handleChange}
+            />
+            <MovieList movies={this.state.movies} curMovie={this.curMovie} />
+            <Pagination
+              totalPage={this.state.totalPage}
+              // currentpage={this.state.currentpage}
+              nextPage={this.nextPage}
+            />
+          </div>
+        ) : (
+          <div>
+            <MovieInfo
+              currentMovie={this.state.currentMovie}
+              closeCurrent={this.closeCurrent}
+            />
+          </div>
+        )}
+
+        {/* <Trending /> */}
       </div>
     );
   }

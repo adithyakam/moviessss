@@ -4,7 +4,7 @@ const Nav = () => {
   return (
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo ">
+        <a href="#" class="brand-logo center">
           Moviesss
         </a>
       </div>

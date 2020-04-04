@@ -5,7 +5,8 @@ const Pagination = ({ totalPage, nextPage }) => {
 
   for (let i = 1; i <= totalPage; i++) {
     page.push(
-      <li onClick={() => nextPage(i)}>
+      <li onClick={() => nextPage(i)} key={i}>
+        {/*eslint-disable-next-line*/}
         <a href="#">{i}</a>{" "}
       </li>
     );

@@ -34,6 +34,7 @@ const MovieInfo = ({ currentMovie, closeCurrent }) => {
         <div className="col s12">
           <img
             src={`https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`}
+            alt="poster"
             height="360rem"
             width="200rem"
             style={{ objectFit: "contain" }}

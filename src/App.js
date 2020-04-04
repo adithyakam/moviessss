@@ -5,8 +5,7 @@ import SearchBar from "./components/SearchBar";
 import MovieList from "./components/MovieList";
 import Pagination from "./components/Pagination";
 import MovieInfo from "./components/MovieInfo";
-
-const dotenv = require("dotenv");
+import Trending from "./components/Trending";
 
 class App extends Component {
   searchText = e => {
@@ -16,6 +15,8 @@ class App extends Component {
     )
       .then(req => req.json())
       .then(res => {
+        // console.log("lengthBef", this.state.movies.length);
+
         this.setState({ movies: res.results, totalPage: res.total_pages });
       });
   };
@@ -37,11 +38,19 @@ class App extends Component {
   };
 
   curMovie = id => {
-    this.state.movies.forEach(movie => {
-      if (movie.id === id) {
-        this.setState({ currentMovie: movie });
-      }
-    });
+    if (this.state.movies.length !== 0) {
+      this.state.movies.forEach(movie => {
+        if (movie.id === id) {
+          this.setState({ currentMovie: movie });
+        }
+      });
+    } else {
+      this.state.tmovies.forEach(movie => {
+        if (movie.id === id) {
+          this.setState({ currentMovie: movie });
+        }
+      });
+    }
   };
 
   closeCurrent = id => {
@@ -55,41 +64,78 @@ class App extends Component {
       movies: [],
       totalPage: 0,
       currentpage: 0,
-      currentMovie: null
+      currentMovie: null,
+      tmovies: []
     };
   }
   componentDidMount() {
-    // <Trending />;
+    const getTrend = () => {
+      fetch(
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API}&page=1`
+      )
+        .then(req => req.json())
+        .then(res => {
+          this.setState({ tmovies: res.results });
+          console.log(this.state.tmovies);
+        });
+    };
+    getTrend();
   }
 
   render() {
     return (
       <div className="App">
         <Nav />
-
-        {this.state.currentMovie == null ? (
+        {this.state.movies.length !== 0 ? (
           <div>
-            <SearchBar
-              searchText={this.searchText}
-              handleChange={this.handleChange}
-            />
-            <MovieList movies={this.state.movies} curMovie={this.curMovie} />
-            <Pagination
-              totalPage={this.state.totalPage}
-              // currentpage={this.state.currentpage}
-              nextPage={this.nextPage}
-            />
+            {this.state.currentMovie == null ? (
+              <div>
+                <SearchBar
+                  searchText={this.searchText}
+                  handleChange={this.handleChange}
+                />
+                <MovieList
+                  movies={this.state.movies}
+                  curMovie={this.curMovie}
+                />
+                <Pagination
+                  totalPage={this.state.totalPage}
+                  // currentpage={this.state.currentpage}
+                  nextPage={this.nextPage}
+                />
+              </div>
+            ) : (
+              <div>
+                <MovieInfo
+                  currentMovie={this.state.currentMovie}
+                  closeCurrent={this.closeCurrent}
+                />
+              </div>
+            )}
           </div>
         ) : (
           <div>
-            <MovieInfo
-              currentMovie={this.state.currentMovie}
-              closeCurrent={this.closeCurrent}
-            />
+            {this.state.currentMovie == null ? (
+              <div>
+                <SearchBar
+                  searchText={this.searchText}
+                  handleChange={this.handleChange}
+                />
+                <Trending
+                  tmovies={this.state.tmovies}
+                  curMovie={this.curMovie}
+                />
+              </div>
+            ) : (
+              <div>
+                <MovieInfo
+                  currentMovie={this.state.currentMovie}
+                  closeCurrent={this.closeCurrent}
+                />
+              </div>
+            )}
           </div>
         )}
-
-        {/* <Trending /> */}
       </div>
     );
   }

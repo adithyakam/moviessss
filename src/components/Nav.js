@@ -4,6 +4,7 @@ const Nav = () => {
   return (
     <nav>
       <div class="nav-wrapper">
+        {/*eslint-disable-next-line*/}
         <a href="#" class="brand-logo center">
           Moviesss
         </a>

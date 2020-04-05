@@ -8,44 +8,41 @@ import MovieInfo from "./components/MovieInfo";
 import Trending from "./components/Trending";
 
 class App extends Component {
-  searchText = e => {
+  searchText = (e) => {
     e.preventDefault();
     fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API}&language=en-US&query=${this.state.searchedText}&page=1`
     )
-      .then(req => req.json())
-      .then(res => {
-        // console.log("lengthBef", this.state.movies.length);
-
+      .then((req) => req.json())
+      .then((res) => {
         this.setState({ movies: res.results, totalPage: res.total_pages });
       });
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     console.log(e.target.value);
     this.setState({ searchedText: e.target.value });
   };
 
-  nextPage = page => {
+  nextPage = (page) => {
     fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API}&language=en-US&query=${this.state.searchedText}&page=${page}`
     )
-      .then(req => req.json())
-      .then(res => {
-        console.log(res);
+      .then((req) => req.json())
+      .then((res) => {
         this.setState({ movies: res.results, currentpage: page });
       });
   };
 
-  curMovie = id => {
+  curMovie = (id) => {
     if (this.state.movies.length !== 0) {
-      this.state.movies.forEach(movie => {
+      this.state.movies.forEach((movie) => {
         if (movie.id === id) {
           this.setState({ currentMovie: movie });
         }
       });
     } else {
-      this.state.tmovies.forEach(movie => {
+      this.state.tmovies.forEach((movie) => {
         if (movie.id === id) {
           this.setState({ currentMovie: movie });
         }
@@ -53,7 +50,7 @@ class App extends Component {
     }
   };
 
-  closeCurrent = id => {
+  closeCurrent = (id) => {
     this.setState({ currentMovie: null });
   };
 
@@ -65,7 +62,7 @@ class App extends Component {
       totalPage: 0,
       currentpage: 0,
       currentMovie: null,
-      tmovies: []
+      tmovies: [],
     };
   }
   componentDidMount() {
@@ -73,10 +70,9 @@ class App extends Component {
       fetch(
         `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API}&page=1`
       )
-        .then(req => req.json())
-        .then(res => {
+        .then((req) => req.json())
+        .then((res) => {
           this.setState({ tmovies: res.results });
-          console.log(this.state.tmovies);
         });
     };
     getTrend();

@@ -8,12 +8,14 @@ const MovieList = ({ movies, curMovie }) => {
         <div className="col s12">
           {movies.map((movie, i) => {
             return (
-              <Movie
-                movie={movie}
-                key={i}
-                poster={movie.poster_path}
-                curMovie={curMovie}
-              />
+              <div class="col s12 m6 l3 ">
+                <Movie
+                  movie={movie}
+                  key={i}
+                  poster={movie.poster_path}
+                  curMovie={curMovie}
+                />
+              </div>
             );
           })}
         </div>

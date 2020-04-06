@@ -2,8 +2,8 @@ import React from "react";
 
 const Movie = ({ movie, poster, curMovie }) => {
   return (
-    <div class="card ">
-      <div class="card-image ">
+    <div class="card  ">
+      <div class="card-image waves-effect ">
         <img
           src={`https://image.tmdb.org/t/p/w500${poster}`}
           alt="poster"
@@ -15,7 +15,7 @@ const Movie = ({ movie, poster, curMovie }) => {
       <div class="card-action">
         {/*eslint-disable-next-line*/}
         <a href="#" onClick={() => curMovie(movie.id)}>
-          more details
+          moredetails
         </a>
       </div>
     </div>

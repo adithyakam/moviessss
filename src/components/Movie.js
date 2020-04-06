@@ -12,10 +12,15 @@ const Movie = ({ movie, poster, curMovie }) => {
           style={{ objectFit: "contain" }}
         ></img>
       </div>
-      <div class="card-action">
+      <div className="overlay"></div>
+      <div className="ca ">
         {/*eslint-disable-next-line*/}
-        <a href="#" onClick={() => curMovie(movie.id)}>
-          moredetails
+        <a
+          href="#"
+          onClick={() => curMovie(movie.id)}
+          className="btn waves-effect  buton  "
+        >
+          more details
         </a>
       </div>
     </div>

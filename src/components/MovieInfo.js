@@ -2,14 +2,15 @@ import React from "react";
 
 const MovieInfo = ({ currentMovie, closeCurrent }) => {
   return (
-    <div className="container">
+    <div className="container card ">
       <div className="row">
         <div>
           <span
+            className="home"
             onClick={() => {
               closeCurrent();
             }}
-            style={{ fontSize: "25" }}
+            style={{ fontSize: "30" }}
           >
             <svg
               aria-hidden="true"
@@ -31,21 +32,39 @@ const MovieInfo = ({ currentMovie, closeCurrent }) => {
             Home
           </span>
         </div>
-        <div className="col s12">
-          <img
-            src={`https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`}
-            alt="poster"
-            height="360rem"
-            width="200rem"
-            style={{ objectFit: "contain" }}
-          ></img>
+        <div className="row">
+          <div className="col s12 ">
+            <img
+              src={`https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`}
+              alt="poster"
+              height="360rem"
+              width="250rem"
+              style={{ objectFit: "contain" }}
+            ></img>
+          </div>
         </div>
-        <div className="col s12">
-          <div className="container">
-            <div>title : {currentMovie.title}</div>
-            <div>{currentMovie.overview}</div>
-            <div>{currentMovie.release_date}</div>
-            <div>{currentMovie.vote_average}</div>
+        <div className="row ">
+          <div className="col s12 ">
+            <div className="container ">
+              <div className="cardDesc card  conatiner ">
+                <div>
+                  <span className="desc">title </span>
+                  <p>{currentMovie.title}</p>
+                </div>
+                <div>
+                  <span className="desc">Overview </span>
+                  <p>{currentMovie.overview}</p>
+                </div>
+                <div>
+                  <span className="desc">Releaase Date </span>
+                  <p>{currentMovie.release_date}</p>
+                </div>
+                <div>
+                  <span className="desc">AVG-Vote </span>
+                  <p>{currentMovie.vote_average}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

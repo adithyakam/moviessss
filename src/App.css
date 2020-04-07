@@ -4,6 +4,10 @@
   min-height: 100vh !important;
   flex-direction: column !important;
 }
+.brand-logo {
+  font-weight: 700;
+  letter-spacing: 2px;
+}
 
 .page-footer {
   margin-top: auto !important;
@@ -90,7 +94,16 @@
 .card:hover .buton {
   opacity: 1 !important;
 }
-
+.cardDesc {
+  width: 60%;
+  margin: auto auto;
+}
+.desc {
+  font-weight: 600 !important;
+  font-size: bold !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px;
+}
 .buton:hover {
   color: #e53935;
   border: #e53935 solid 2px;
@@ -100,4 +113,8 @@
 
 .cen {
   margin: auto !important;
+}
+.home {
+  cursor: pointer !important;
+  margin: 10px !important                             ;
 }

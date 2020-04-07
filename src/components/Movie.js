@@ -2,7 +2,7 @@ import React from "react";
 
 const Movie = ({ movie, poster, curMovie }) => {
   return (
-    <div class="card  ">
+    <div class="card  hoverable">
       <div class="card-image waves-effect ">
         <img
           src={`https://image.tmdb.org/t/p/w500${poster}`}

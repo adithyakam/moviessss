@@ -1,7 +1,14 @@
 .App {
   text-align: center;
+  display: flex !important;
+  min-height: 100vh !important;
+  flex-direction: column !important;
 }
 
+.page-footer {
+  margin-top: auto !important;
+  margin-bottom: 0 !important;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -89,4 +96,8 @@
   border: #e53935 solid 2px;
   background: wheat;
   font-weight: 700;
+}
+
+.cen {
+  margin: auto !important;
 }

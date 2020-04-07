@@ -6,6 +6,7 @@ import MovieList from "./components/MovieList";
 import Pagination from "./components/Pagination";
 import MovieInfo from "./components/MovieInfo";
 import Trending from "./components/Trending";
+import Footer from "./components/Footer";
 
 class App extends Component {
   searchText = (e) => {
@@ -133,6 +134,7 @@ class App extends Component {
             )}
           </div>
         )}
+        <Footer className="footer" />;
       </div>
     );
   }

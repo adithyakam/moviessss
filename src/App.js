@@ -118,7 +118,7 @@ class App extends Component {
                   searchText={this.searchText}
                   handleChange={this.handleChange}
                 />
-                <h1>TRENDING</h1>
+                <h1>TRENDING Movies Daily</h1>
                 <Trending
                   tmovies={this.state.tmovies}
                   curMovie={this.curMovie}

@@ -16,17 +16,12 @@ class App extends Component {
     )
       .then((req) => req.json())
       .then((res) => {
-        this.setState({
-          movies: res.results,
-          totalPage: res.total_pages,
-          searchedText: "",
-        });
-        console.log("Searchhhh", this.state.searchedText);
+        this.setState({ movies: res.results, totalPage: res.total_pages });
       });
   };
 
   handleChange = (e) => {
-    // console.log(e.target.value);
+    console.log(e.target.value);
     this.setState({ searchedText: e.target.value });
   };
 
@@ -36,7 +31,11 @@ class App extends Component {
     )
       .then((req) => req.json())
       .then((res) => {
-        this.setState({ movies: res.results, currentpage: page });
+        this.setState({
+          movies: res.results,
+          currentpage: page,
+          searchedText: "",
+        });
       });
   };
 

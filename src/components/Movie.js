@@ -13,15 +13,17 @@ const Movie = ({ movie, poster, curMovie }) => {
         ></img>
       </div>
       <div className="overlay"></div>
+
       <div className="ca ">
+        <h1 style={{ color: "white" }}>{movie.title}</h1>
         {/*eslint-disable-next-line*/}
-        <a
+        <button
           href="#"
           onClick={() => curMovie(movie.id)}
           className="btn waves-effect  buton  "
         >
           more details
-        </a>
+        </button>
       </div>
     </div>
   );

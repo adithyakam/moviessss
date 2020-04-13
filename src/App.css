@@ -139,3 +139,40 @@
 .mar {
   margin-top: 1.4rem;
 }
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  h1 {
+    font-size: 1.2rem;
+  }
+  .desc {
+    font-weight: 600 !important;
+    letter-spacing: 0.9px;
+  }
+  .mov-title {
+    font-size: 1.3rem;
+    line-height: 20px;
+  }
+  .buton {
+    /* width: 100%; */
+    font-size: 1rem;
+  }
+
+  .mar {
+    margin-top: 1.2rem;
+  }
+  .movieInfo {
+    margin-top: 0.8rem;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}

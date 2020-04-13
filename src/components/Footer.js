@@ -22,9 +22,7 @@ const Footer = () => {
       <div class="footer-copyright">
         <div class="container">
           © 2020 copyright Adithya
-          <a class="grey-text text-lighten-4 right" href="#!">
-            More Links
-          </a>
+          <a class="grey-text text-lighten-4 right" href="#!"></a>
         </div>
       </div>
     </footer>

@@ -16,12 +16,17 @@ class App extends Component {
     )
       .then((req) => req.json())
       .then((res) => {
-        this.setState({ movies: res.results, totalPage: res.total_pages });
+        this.setState({
+          movies: res.results,
+          totalPage: res.total_pages,
+          searchedText: "",
+        });
+        console.log("Searchhhh", this.state.searchedText);
       });
   };
 
   handleChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     this.setState({ searchedText: e.target.value });
   };
 
@@ -118,7 +123,7 @@ class App extends Component {
                   searchText={this.searchText}
                   handleChange={this.handleChange}
                 />
-                <h1>TRENDING Movies OF the day</h1>
+                <h1>TRENDING MOVIES OF THE DAY</h1>
                 <Trending
                   tmovies={this.state.tmovies}
                   curMovie={this.curMovie}

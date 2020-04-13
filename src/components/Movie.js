@@ -15,7 +15,9 @@ const Movie = ({ movie, poster, curMovie }) => {
       <div className="overlay"></div>
 
       <div className="ca ">
-        <h1 style={{ color: "white" }}>{movie.title}</h1>
+        <h1 className="mov-title " style={{ color: "white" }}>
+          {movie.title}
+        </h1>
         {/*eslint-disable-next-line*/}
         <button
           href="#"

@@ -118,3 +118,12 @@
   cursor: pointer !important;
   margin: 10px !important                             ;
 }
+
+.mov-title {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.mar {
+  margin-top: 1.4rem;
+}

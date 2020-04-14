@@ -102,7 +102,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Nav />
+        <Nav favMov={this.state.favMov} />
         {this.state.movies.length !== 0 ? (
           <div>
             {this.state.currentMovie == null ? (

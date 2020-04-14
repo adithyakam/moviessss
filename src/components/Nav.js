@@ -1,11 +1,16 @@
 import React from "react";
 import M from "materialize-css";
 
-const Nav = () => {
+const Nav = ({ favMov }) => {
   {
     document.addEventListener("DOMContentLoaded", function () {
       var elems = document.querySelectorAll(".dropdown-trigger");
-      var instances = M.Dropdown.init(elems, {});
+      var instances = M.Dropdown.init(elems, {
+        constrainWidth: false,
+        alignment: "right",
+        coverTrigger: false,
+        container: true,
+      });
     });
   }
   return (
@@ -16,7 +21,6 @@ const Nav = () => {
           margin: "2px 2px 2px 2px",
           display: "flex",
           flexDirection: "row",
-          backgroundColor: "blue",
           justifyContent: "space-between",
           alignItems: "center",
         }}
@@ -35,27 +39,10 @@ const Nav = () => {
         </a>
 
         {/* <!-- Dropdown Structure --> */}
-        <ul id="dropdown1" class="dropdown-content right">
-          <li>
-            <a href="#!">one</a>
-          </li>
-          <li>
-            <a href="#!">two</a>
-          </li>
-          <li class="divider" tabindex="-1"></li>
-          <li>
-            <a href="#!">three</a>
-          </li>
-          <li>
-            <a href="#!">
-              <i class="material-icons">view_module</i>four
-            </a>
-          </li>
-          <li>
-            <a href="#!">
-              <i class="material-icons">cloud</i>five
-            </a>
-          </li>
+        <ul id="dropdown1" class="dropdown-content collection">
+          {favMov.map((fav, i) => {
+            return <li>{fav.title}</li>;
+          })}
         </ul>
       </div>
     </nav>

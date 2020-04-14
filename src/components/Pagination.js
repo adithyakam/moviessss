@@ -11,7 +11,6 @@ const Pagination = ({ totalPage, nextPage }) => {
       </li>
     );
   }
-  console.log("adsas", page);
   return (
     <div className="row">
       <div className="col s12">

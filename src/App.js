@@ -21,7 +21,6 @@ class App extends Component {
   };
 
   handleChange = (e) => {
-    console.log(e.target.value);
     this.setState({ searchedText: e.target.value });
   };
 
@@ -55,8 +54,22 @@ class App extends Component {
     }
   };
 
+  close = () => {
+    this.setState({ movies: [] });
+  };
+
   closeCurrent = (id) => {
     this.setState({ currentMovie: null });
+  };
+
+  svgCol = (movi) => {
+    console.log("workig", movi);
+    const pa = document.querySelector("#pat");
+    this.state.favMov.includes(movi)
+      ? this.state.favMov.splice(this.state.favMov.indexOf(movi), 1)
+      : this.setState({ favMov: [...this.state.favMov, movi] });
+
+    console.log("Fav", this.state.favMov);
   };
 
   constructor() {
@@ -68,6 +81,8 @@ class App extends Component {
       currentpage: 0,
       currentMovie: null,
       tmovies: [],
+      favorite: false,
+      favMov: [{}],
     };
   }
   componentDidMount() {
@@ -79,6 +94,7 @@ class App extends Component {
         .then((res) => {
           this.setState({ tmovies: res.results });
         });
+      setInterval(() => this.setState({ time: Date.now() }), 500);
     };
     getTrend();
   }
@@ -98,6 +114,10 @@ class App extends Component {
                 <MovieList
                   movies={this.state.movies}
                   curMovie={this.curMovie}
+                  svgCol={this.svgCol}
+                  favMov={this.state.favMov}
+                  favorite={this.state.favorite}
+                  close={this.close}
                 />
                 <Pagination
                   totalPage={this.state.totalPage}
@@ -126,6 +146,9 @@ class App extends Component {
                 <Trending
                   tmovies={this.state.tmovies}
                   curMovie={this.curMovie}
+                  svgCol={this.svgCol}
+                  favMov={this.state.favMov}
+                  favorite={this.state.favorite}
                 />
               </div>
             ) : (

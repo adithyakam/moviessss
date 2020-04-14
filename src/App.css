@@ -94,9 +94,33 @@
   background: rgba(17, 17, 17, 0);
   transition: background 0.5s ease;
 }
+
+.svvg {
+  /* position: absolute !important; */
+  position: absolute;
+  top: 0 !important;
+  opacity: 0;
+  margin-left: 3px;
+  font-size: 2rem;
+  left: 0 !important;
+  z-index: 99 !important;
+}
 .card:hover .overlay {
   display: block;
   background: rgba(0, 0, 0, 0.3);
+}
+.card:hover .svvg {
+  display: inline-block;
+  z-index: 99 !important;
+  opacity: 1;
+  backgroud: white;
+}
+
+.chgWte {
+  fill: white !important;
+}
+.chgRed {
+  fill: red !important;
 }
 .card:hover .buton {
   opacity: 1 !important;

@@ -32,12 +32,12 @@ class Trending extends Component {
         showDots={true}
         responsive={responsive}
         infinite={true}
-        autoPlay={this.props.deviceType !== "mobile" ? true : false}
-        autoPlaySpeed={1000}
-        renderButtonGroupOutside={true}
-        keyBoardControl={true}
-        customTransition="all .5"
-        transitionDuration={1000}
+        // autoPlay={this.props.deviceType !== "mobile" ? true : false}
+        // autoPlaySpeed={1000}
+        // renderButtonGroupOutside={true}
+        // keyBoardControl={true}
+        // customTransition="all .5"
+        // transitionDuration={1000}
         centerMode={true}
         focusOnSelect={true}
         containerClass="carousel-container"
@@ -54,6 +54,9 @@ class Trending extends Component {
                 key={i}
                 poster={movie.poster_path}
                 curMovie={this.props.curMovie}
+                svgCol={this.props.svgCol}
+                favMov={this.props.favMov}
+                favorite={this.props.favorite}
               />
             </div>
           );

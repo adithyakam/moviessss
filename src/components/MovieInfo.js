@@ -10,7 +10,7 @@ const MovieInfo = ({ currentMovie, closeCurrent }) => {
             onClick={() => {
               closeCurrent();
             }}
-            style={{ fontSize: "30" }}
+            style={{ fontSize: "2rem" }}
           >
             <svg
               aria-hidden="true"

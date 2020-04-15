@@ -69,13 +69,22 @@ class App extends Component {
 
   svgCol = (movi) => {
     let favo = false;
-    this.state.favMov.forEach(function (mov) {
+    let index = 0;
+    let ii = 0;
+    this.state.favMov.forEach(function (mov, i) {
       if (mov.id === movi.id) {
+        console.log(movi, mov);
+        console.log("ii", index);
+        index = ii;
         return (favo = true);
       }
+      ii++;
     });
-    favo == true
-      ? this.state.favMov.splice(this.state.favMov.indexOf(movi), 1)
+    console.log("index", index);
+
+    // console.log("splice", this.state.favMov.splice(index, 1), index);
+    favo === true
+      ? this.state.favMov.splice(index, 1)
       : this.setState({
           favMov: [...this.state.favMov, movi],
           tmovies: [...this.state.tmovies],
@@ -92,7 +101,7 @@ class App extends Component {
       currentMovie: null,
       tmovies: [],
       favorite: false,
-      favMov: [{}],
+      favMov: [],
     };
   }
   componentDidMount() {

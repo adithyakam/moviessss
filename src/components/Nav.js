@@ -16,17 +16,17 @@ const Nav = ({ favMov, remFav }) => {
   return (
     <nav>
       <div
-        class="nav-wrapper"
+        class="nav-wrapper "
         style={{
           margin: "2px 2px 2px 2px",
           display: "flex",
           flexDirection: "row",
-          justifyContent: "space-between",
+          justifyContent: "space-around",
           alignItems: "center",
         }}
       >
         {/*eslint-disable-next-line*/}
-        <a href="./App.js" class="brand-logo left">
+        <a href="./App.js" class="brand-logo ">
           Moviesss
         </a>
         <a

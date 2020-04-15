@@ -54,6 +54,16 @@ class App extends Component {
     }
   };
 
+  remFav = (movi) => {
+    console.log("workins");
+
+    this.state.favMov.forEach(function (fav) {
+      if (fav.id === movi.id) {
+        this.state.favMov.splice(this.state.favMov.indexOf(fav), 1);
+      }
+    });
+  };
+
   close = () => {
     this.setState({ movies: [] });
   };
@@ -61,13 +71,14 @@ class App extends Component {
   closeCurrent = (id) => {
     this.setState({ currentMovie: null });
   };
-
   svgCol = (movi) => {
-    console.log("workig", movi);
     const pa = document.querySelector("#pat");
     this.state.favMov.includes(movi)
       ? this.state.favMov.splice(this.state.favMov.indexOf(movi), 1)
-      : this.setState({ favMov: [...this.state.favMov, movi] });
+      : this.setState({
+          favMov: [...this.state.favMov, movi],
+          tmovies: [...this.state.tmovies],
+        });
 
     console.log("Fav", this.state.favMov);
   };
@@ -94,15 +105,15 @@ class App extends Component {
         .then((res) => {
           this.setState({ tmovies: res.results });
         });
-      setInterval(() => this.setState({ time: Date.now() }), 500);
     };
     getTrend();
+    // setInterval(() => this.setState({ favMov: [...this.state.favMov] }), 500);
   }
 
   render() {
     return (
       <div className="App">
-        <Nav favMov={this.state.favMov} />
+        <Nav favMov={this.state.favMov} remFav={this.remFav} />
         {this.state.movies.length !== 0 ? (
           <div>
             {this.state.currentMovie == null ? (

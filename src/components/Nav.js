@@ -1,14 +1,14 @@
 import React from "react";
 import M from "materialize-css";
 
-const Nav = ({ favMov }) => {
+const Nav = ({ favMov, remFav }) => {
   {
     document.addEventListener("DOMContentLoaded", function () {
       var elems = document.querySelectorAll(".dropdown-trigger");
       var instances = M.Dropdown.init(elems, {
         constrainWidth: false,
-        alignment: "right",
         coverTrigger: false,
+        alignment: "right",
         container: true,
       });
     });
@@ -35,13 +35,29 @@ const Nav = ({ favMov }) => {
           data-target="dropdown1"
           style={{ marginLeft: "auto" }}
         >
-          Drop Me!
+          Favorites
         </a>
 
-        {/* <!-- Dropdown Structure --> */}
-        <ul id="dropdown1" class="dropdown-content collection">
+        <ul id="dropdown1" class="dropdown-content right">
           {favMov.map((fav, i) => {
-            return <li>{fav.title}</li>;
+            return (
+              <li
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                {fav.title}
+                <span
+                  onClick={() => {
+                    remFav(fav);
+                  }}
+                >
+                  <i class="large material-icons">delete</i>
+                </span>
+              </li>
+            );
           })}
         </ul>
       </div>

@@ -16,7 +16,7 @@ const Nav = ({ favMov, remFav }) => {
   return (
     <nav>
       <div
-        class="nav-wrapper "
+        className="nav-wrapper "
         style={{
           margin: "2px 2px 2px 2px",
           display: "flex",
@@ -26,11 +26,11 @@ const Nav = ({ favMov, remFav }) => {
         }}
       >
         {/*eslint-disable-next-line*/}
-        <a href="./App.js" class="brand-logo ">
+        <a href="./App.js" className="brand-logo ">
           Moviesss
         </a>
         <a
-          class="dropdown-trigger btn "
+          className="dropdown-trigger btn "
           href="#"
           data-target="dropdown1"
           style={{ marginLeft: "auto" }}
@@ -38,7 +38,7 @@ const Nav = ({ favMov, remFav }) => {
           Favorites
         </a>
 
-        <ul id="dropdown1" class="dropdown-content right">
+        <ul id="dropdown1" className="dropdown-content right">
           {favMov.map((fav, i) => {
             return (
               <li
@@ -54,7 +54,7 @@ const Nav = ({ favMov, remFav }) => {
                     remFav(fav);
                   }}
                 >
-                  <i class="large material-icons">delete</i>
+                  <i className="large material-icons">delete</i>
                 </span>
               </li>
             );

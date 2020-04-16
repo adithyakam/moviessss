@@ -1,7 +1,7 @@
 import React from "react";
 import Movie from "./Movie";
 
-const MovieList = ({ movies, curMovie, svgCol, favMov, favorite, close }) => {
+const MovieList = ({ movies, curMovie, svgCol, favMov, close }) => {
   return (
     <div className="container">
       <span
@@ -18,7 +18,7 @@ const MovieList = ({ movies, curMovie, svgCol, favMov, favorite, close }) => {
         <div className="col s12">
           {movies.map((movie, i) => {
             return (
-              <div class="col s12 m6 l3 ">
+              <div class="col s12 m4 l3 ">
                 <Movie
                   movie={movie}
                   key={i}
@@ -26,7 +26,6 @@ const MovieList = ({ movies, curMovie, svgCol, favMov, favorite, close }) => {
                   curMovie={curMovie}
                   svgCol={svgCol}
                   favMov={favMov}
-                  favorite={favorite}
                 />
               </div>
             );

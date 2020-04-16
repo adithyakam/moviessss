@@ -79,10 +79,17 @@
   outline: 0;
   border: 0;
 }
+/* .card {
+  height: 360 !important;
+  width: 100%;
+} */
 .card-image {
   position: absolute;
   background: transparent;
+  object-fit: scale-down;
   z-index: 0;
+  width: 70% !important;
+  height: 100% !important;
 }
 
 .overlay {
@@ -94,7 +101,12 @@
   background: rgba(17, 17, 17, 0);
   transition: background 0.5s ease;
 }
-
+.card-content {
+  display: none;
+}
+.card.small .card-image {
+  max-height: 100%;
+}
 .svvg {
   /* position: absolute !important; */
   position: absolute;

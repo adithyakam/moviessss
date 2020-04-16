@@ -7,16 +7,22 @@ import Pagination from "./components/Pagination";
 import MovieInfo from "./components/MovieInfo";
 import Trending from "./components/Trending";
 import Footer from "./components/Footer";
+import Loader from "./components/Loader";
 
 class App extends Component {
   searchText = (e) => {
     e.preventDefault();
+    this.setState({ loading: true });
     fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API}&language=en-US&query=${this.state.searchedText}&page=1`
     )
       .then((req) => req.json())
       .then((res) => {
-        this.setState({ movies: res.results, totalPage: res.total_pages });
+        this.setState({
+          movies: res.results,
+          totalPage: res.total_pages,
+          loading: false,
+        });
       });
   };
 
@@ -25,6 +31,8 @@ class App extends Component {
   };
 
   nextPage = (page) => {
+    this.setState({ loading: true });
+
     fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API}&language=en-US&query=${this.state.searchedText}&page=${page}`
     )
@@ -100,18 +108,20 @@ class App extends Component {
       currentpage: 0,
       currentMovie: null,
       tmovies: [],
-      favorite: false,
+      loading: true,
       favMov: [],
     };
   }
   componentDidMount() {
     const getTrend = () => {
+      this.setState({ loading: true });
+
       fetch(
         `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API}&page=1`
       )
         .then((req) => req.json())
         .then((res) => {
-          this.setState({ tmovies: res.results });
+          this.setState({ tmovies: res.results, loading: false });
         });
     };
     getTrend();
@@ -130,19 +140,24 @@ class App extends Component {
                   searchText={this.searchText}
                   handleChange={this.handleChange}
                 />
-                <MovieList
-                  movies={this.state.movies}
-                  curMovie={this.curMovie}
-                  svgCol={this.svgCol}
-                  favMov={this.state.favMov}
-                  favorite={this.state.favorite}
-                  close={this.close}
-                />
-                <Pagination
-                  totalPage={this.state.totalPage}
-                  // currentpage={this.state.currentpage}
-                  nextPage={this.nextPage}
-                />
+                {this.state.loading ? (
+                  <Loader />
+                ) : (
+                  <div>
+                    <MovieList
+                      movies={this.state.movies}
+                      curMovie={this.curMovie}
+                      svgCol={this.svgCol}
+                      favMov={this.state.favMov}
+                      close={this.close}
+                    />
+                    <Pagination
+                      totalPage={this.state.totalPage}
+                      // currentpage={this.state.currentpage}
+                      nextPage={this.nextPage}
+                    />
+                  </div>
+                )}
               </div>
             ) : (
               <div>
@@ -162,13 +177,18 @@ class App extends Component {
                   handleChange={this.handleChange}
                 />
                 <h1>TRENDING MOVIES OF THE DAY</h1>
-                <Trending
-                  tmovies={this.state.tmovies}
-                  curMovie={this.curMovie}
-                  svgCol={this.svgCol}
-                  favMov={this.state.favMov}
-                  favorite={this.state.favorite}
-                />
+                {this.state.loading ? (
+                  <Loader />
+                ) : (
+                  <div>
+                    <Trending
+                      tmovies={this.state.tmovies}
+                      curMovie={this.curMovie}
+                      svgCol={this.svgCol}
+                      favMov={this.state.favMov}
+                    />
+                  </div>
+                )}
               </div>
             ) : (
               <div>

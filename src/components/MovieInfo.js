@@ -19,7 +19,11 @@ const MovieInfo = ({ currentMovie, closeCurrent }) => {
         <div className="mar row">
           <div className="Image col s12 m4 l5 ">
             <img
-              src={`https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`}
+              src={
+                currentMovie.poster_path == null
+                  ? "https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg"
+                  : `https://image.tmdb.org/t/p/w342${currentMovie.poster_path}`
+              }
               alt="poster"
               height="360rem"
               width="250rem"

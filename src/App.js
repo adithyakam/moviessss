@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Nav from "./components/Nav";
+import Nomovie from "./components/Nomovie";
 import SearchBar from "./components/SearchBar";
 import MovieList from "./components/MovieList";
 import Pagination from "./components/Pagination";
@@ -21,6 +22,8 @@ class App extends Component {
         this.setState({
           movies: res.results,
           totalPage: res.total_pages,
+          searched: this.state.searchedText,
+          searchText: "",
           loading: false,
         });
       });
@@ -41,7 +44,6 @@ class App extends Component {
         this.setState({
           movies: res.results,
           currentpage: page,
-          searchedText: "",
         });
       });
   };
@@ -103,6 +105,7 @@ class App extends Component {
     super();
     this.state = {
       searchedText: "",
+      searched: "",
       movies: [],
       totalPage: 0,
       currentpage: 0,
@@ -172,21 +175,32 @@ class App extends Component {
           <div>
             {this.state.currentMovie == null ? (
               <div>
-                <SearchBar
-                  searchText={this.searchText}
-                  handleChange={this.handleChange}
-                />
-                <h1>TRENDING MOVIES OF THE DAY</h1>
-                {this.state.loading ? (
-                  <Loader />
+                {this.state.searched !== "" && this.state.totalPage == 0 ? (
+                  <Nomovie
+                    searchText={this.searchText}
+                    handleChange={this.handleChange}
+                    close={this.close}
+                    loading={this.state.loading}
+                  />
                 ) : (
                   <div>
-                    <Trending
-                      tmovies={this.state.tmovies}
-                      curMovie={this.curMovie}
-                      svgCol={this.svgCol}
-                      favMov={this.state.favMov}
+                    <SearchBar
+                      searchText={this.searchText}
+                      handleChange={this.handleChange}
                     />
+                    <h1>TRENDING MOVIES OF THE DAY</h1>
+                    {this.state.loading ? (
+                      <Loader />
+                    ) : (
+                      <div>
+                        <Trending
+                          tmovies={this.state.tmovies}
+                          curMovie={this.curMovie}
+                          svgCol={this.svgCol}
+                          favMov={this.state.favMov}
+                        />
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

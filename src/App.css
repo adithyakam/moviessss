@@ -104,8 +104,16 @@
 .card-content {
   display: none;
 }
+.card {
+  overflow: hidden;
+}
 .card.small .card-image {
   max-height: 100%;
+}
+
+.card:hover .card-image {
+  transform: scale(1.5);
+  overflow: hidden;
 }
 .svvg {
   /* position: absolute !important; */

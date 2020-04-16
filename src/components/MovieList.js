@@ -14,24 +14,28 @@ const MovieList = ({ movies, curMovie, svgCol, favMov, close }) => {
         <i class="tiny material-icons">arrow_back</i>
         Back
       </span>
-      <div className="row">
-        <div className="col s12">
-          {movies.map((movie, i) => {
-            return (
-              <div class="col s12 m4 l3 ">
-                <Movie
-                  movie={movie}
-                  key={i}
-                  poster={movie.poster_path}
-                  curMovie={curMovie}
-                  svgCol={svgCol}
-                  favMov={favMov}
-                />
-              </div>
-            );
-          })}
+      {movies.length == 0 ? (
+        <h1>No movies found </h1>
+      ) : (
+        <div className="row">
+          <div className="col s12">
+            {movies.map((movie, i) => {
+              return (
+                <div class="col s12 m4 l3 ">
+                  <Movie
+                    movie={movie}
+                    key={i}
+                    poster={movie.poster_path}
+                    curMovie={curMovie}
+                    svgCol={svgCol}
+                    favMov={favMov}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

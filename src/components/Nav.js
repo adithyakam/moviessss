@@ -1,7 +1,7 @@
 import React from "react";
 import M from "materialize-css";
 
-const Nav = ({ favMov, remFav }) => {
+const Nav = ({ favMov, remFav, newFav, remNewFav }) => {
   {
     document.addEventListener("DOMContentLoaded", function () {
       var elems = document.querySelectorAll(".dropdown-trigger");
@@ -34,11 +34,24 @@ const Nav = ({ favMov, remFav }) => {
           href="#"
           data-target="dropdown1"
           style={{ marginLeft: "auto" }}
+          onClick={() => {
+            remNewFav();
+            document.querySelector("#badge").classList.remove("new");
+            document.querySelector("#badge").classList.remove("badge");
+            document.querySelector("#badge").classList.remove("blue");
+          }}
         >
           Favorites
         </a>
+        <span
+          className={newFav > 0 ? "new badge blue" : ""}
+          style={newFav > 0 ? { display: "block" } : { display: "none" }}
+          id="badge"
+        >
+          {newFav}
+        </span>
 
-        <ul id="dropdown1" className="dropdown-content right">
+        <ul id="dropdown1" className="dropdown-content right ">
           {favMov.map((fav, i) => {
             return (
               <li
@@ -56,6 +69,7 @@ const Nav = ({ favMov, remFav }) => {
                 >
                   <i className="large material-icons">delete</i>
                 </span>
+                <span class="new badge"></span>
               </li>
             );
           })}

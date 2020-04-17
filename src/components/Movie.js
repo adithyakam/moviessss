@@ -9,7 +9,6 @@ const Movie = ({ movie, poster, curMovie, svgCol, favMov, a = false }) => {
       return;
     }
   });
-  console.log("A", a);
 
   return (
     <div class={a == true ? "card hoverable" : "card small hoverable"}>

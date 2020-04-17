@@ -15,16 +15,7 @@ const Nav = ({ favMov, remFav, newFav, remNewFav }) => {
   }
   return (
     <nav>
-      <div
-        className="nav-wrapper "
-        style={{
-          margin: "2px 2px 2px 2px",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-around",
-          alignItems: "center",
-        }}
-      >
+      <div className="nav-wrapper ">
         {/*eslint-disable-next-line*/}
         <a href="./App.js" className="brand-logo ">
           Moviesss
@@ -43,13 +34,6 @@ const Nav = ({ favMov, remFav, newFav, remNewFav }) => {
         >
           Favorites
         </a>
-        <span
-          className={newFav > 0 ? "new badge blue" : ""}
-          style={newFav > 0 ? { display: "block" } : { display: "none" }}
-          id="badge"
-        >
-          {newFav}
-        </span>
 
         <ul id="dropdown1" className="dropdown-content right ">
           {favMov.map((fav, i) => {
@@ -75,6 +59,13 @@ const Nav = ({ favMov, remFav, newFav, remNewFav }) => {
           })}
         </ul>
       </div>
+      <span
+        className={newFav > 0 ? "new badge blue" : ""}
+        style={newFav > 0 ? { display: "block" } : { display: "none" }}
+        id="badge"
+      >
+        {newFav}
+      </span>
     </nav>
   );
 };

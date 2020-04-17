@@ -6,7 +6,7 @@ const SearchBar = ({ searchText, handleChange }) => {
       <div class="row">
         <section class="col s7 offeset-6">
           <form onSubmit={searchText}>
-            <div class="input-field col s12">
+            <div className="input-field col s12">
               <input
                 id="text"
                 type="text"

@@ -4,6 +4,21 @@
   min-height: 100vh !important;
   flex-direction: column !important;
 }
+
+.nav-wrapper {
+  margin: 2px 2px 2px 2px !important;
+  display: flex !important;
+  justify-content: space-around !important;
+  align-items: center !important;
+}
+
+#badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 2px 1px;
+  border-radius: 10px;
+}
 .brand-logo {
   font-weight: 700;
   letter-spacing: 2px;
@@ -192,6 +207,13 @@
   }
   h1 {
     font-size: 1.2rem;
+  }
+  .brand-logo {
+    font-size: 1.8rem !important;
+  }
+  .dropdown-trigger {
+    font-size: 0.6rem;
+    font-weight: bold !important;
   }
   .desc {
     font-weight: 600 !important;

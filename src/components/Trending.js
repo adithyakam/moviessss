@@ -27,7 +27,7 @@ class Trending extends Component {
   render() {
     return (
       <Carousel
-        swipeable={false}
+        swipeable={true}
         draggable={false}
         showDots={true}
         responsive={responsive}

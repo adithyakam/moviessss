@@ -20,8 +20,9 @@
   border-radius: 10px;
 }
 .brand-logo {
-  font-weight: 700;
-  letter-spacing: 2px;
+  font-family: "Sacramento", cursive;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .page-footer {

@@ -8,14 +8,18 @@ import Pagination from "./components/Pagination";
 import MovieInfo from "./components/MovieInfo";
 import Trending from "./components/Trending";
 import Footer from "./components/Footer";
+import dotenv from "dotenv";
+
 import Loader from "./components/Loader";
 
 class App extends Component {
   searchText = (e) => {
+    const REACT_APP_API = process.env.REACT_APP_API;
+
     e.preventDefault();
     this.setState({ loading: true });
     fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API}&language=en-US&query=${this.state.searchedText}&page=1`
+      `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_API}&language=en-US&query=${this.state.searchedText}&page=1`
     )
       .then((req) => req.json())
       .then((res) => {
@@ -34,10 +38,12 @@ class App extends Component {
   };
 
   nextPage = (page) => {
+    const REACT_APP_API = process.env.REACT_APP_API;
+
     this.setState({ loading: true });
 
     fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API}&language=en-US&query=${this.state.searchedText}&page=${page}`
+      `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_API}&language=en-US&query=${this.state.searchedText}&page=${page}`
     )
       .then((req) => req.json())
       .then((res) => {
@@ -127,11 +133,13 @@ class App extends Component {
     };
   }
   componentDidMount() {
+    const REACT_APP_API = process.env.REACT_APP_API;
+
     const getTrend = () => {
       this.setState({ loading: true });
 
       fetch(
-        `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API}&page=1`
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=${REACT_APP_API}&page=1`
       )
         .then((req) => req.json())
         .then((res) => {

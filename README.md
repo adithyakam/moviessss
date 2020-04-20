@@ -1,3 +1,7 @@
+Hi his is app used to gethe current trnding movies and also you can add favorite movie to you favorites also
+
+---------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -1,4 +1,4 @@
-Hi his is app used to gethe current trnding movies and also you can add favorite movie to you favorites also
+Hi this is Movies app used to get the current trending movies , search movie names ,also can also add movies to your favorites
 
 ---------------------------
 
